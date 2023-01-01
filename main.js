@@ -1,4 +1,5 @@
-// 函式：取得目前棋盤上的空格
+// 函式區 ///////////////////////////////////////////////////////////////////////////////////////
+// 取得目前棋盤上的空格
 function getEmptyPositions() {
   // 這邊也可以寫成：
   // return [1, 2, 3, 4, 5, 6, 7, 8, 9].filter(
@@ -187,9 +188,11 @@ function onCellClicked(event) {
   }, 100);
 }
 
+// 資料區 /////////////////////////////////////////////////////////////////////////////////////////
 const circlePositions = [];
 const crossPositions = [];
 
+// 遊戲開始 ///////////////////////////////////////////////////////////////////////////////////////
 // 點擊控制閥，只有在 false 時玩家才能畫圈，所以可以控制流程讓電腦畫完玩家才能畫
 // 沒控管就會發生一次連按好幾格都能打圈的狀況
 // 不過實際上應該只能按到 2 格，因為你按的同時電腦也會下棋，只是不會馬上出現
@@ -197,6 +200,7 @@ const crossPositions = [];
 let clickingThrottle = false;
 let gameoverFlag = false;
 
+// 設置事件監聽器，只要點擊九宮格就觸發 onCellClicked 進而呼叫一堆函式
 document.querySelectorAll("#app table tr td").forEach((cell) => {
   cell.addEventListener("click", onCellClicked);
 });
